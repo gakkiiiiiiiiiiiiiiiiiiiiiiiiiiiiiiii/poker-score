@@ -466,11 +466,23 @@ setInterval(
 	5 * 60 * 1000,
 ); // 每5分钟检查一次
 
-// 微信云托管使用环境变量 PORT，默认 8080（非特权端口）
-// 微信云托管会自动注入 PORT 环境变量，无需担心端口冲突
-const PORT = process.env.PORT || 8080;
+// 微信云托管使用环境变量 PORT，默认 80
+// 微信云托管会自动注入 PORT 环境变量（通常是 80），应用会监听该端口
+const PORT = process.env.PORT || 80;
 const HOST = process.env.HOST || '0.0.0.0';
+
+// 添加错误处理
+server.on('error', (err) => {
+	console.error('服务器启动错误:', err);
+	if (err.code === 'EACCES') {
+		console.error('权限错误：无法绑定端口', PORT);
+		console.error('请确保使用 root 用户或使用非特权端口（>1024）');
+	}
+	process.exit(1);
+});
 
 server.listen(PORT, HOST, () => {
 	console.log(`服务器运行在 ${HOST}:${PORT}`);
+	console.log(`健康检查端点: http://${HOST}:${PORT}/health`);
+	console.log(`环境变量 PORT: ${process.env.PORT || '未设置（使用默认值 80）'}`);
 });
