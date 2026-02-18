@@ -466,8 +466,9 @@ setInterval(
 	5 * 60 * 1000,
 ); // 每5分钟检查一次
 
-// 微信云托管使用环境变量 PORT，默认 80
-const PORT = process.env.PORT || 80;
+// 微信云托管使用环境变量 PORT，默认 8080（非特权端口）
+// 微信云托管会自动注入 PORT 环境变量，无需担心端口冲突
+const PORT = process.env.PORT || 8080;
 const HOST = process.env.HOST || '0.0.0.0';
 
 server.listen(PORT, HOST, () => {
