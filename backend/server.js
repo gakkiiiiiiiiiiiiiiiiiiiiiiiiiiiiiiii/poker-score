@@ -11,6 +11,22 @@ const server = http.createServer(app);
 app.use(cors());
 app.use(express.json());
 
+// 健康检查端点（用于 Docker 健康检查和微信云托管）
+app.get('/health', (req, res) => {
+	res.status(200).json({
+		status: 'ok',
+		timestamp: Date.now()
+	});
+});
+
+// 根路径
+app.get('/', (req, res) => {
+	res.json({
+		message: '锄大地计分后端服务',
+		version: '1.0.0'
+	});
+});
+
 // 房间存储
 const rooms = new Map();
 // WebSocket 连接存储
@@ -450,7 +466,10 @@ setInterval(
 	5 * 60 * 1000,
 ); // 每5分钟检查一次
 
-const PORT = process.env.PORT || 3000;
-server.listen(PORT, () => {
-	console.log(`服务器运行在端口 ${PORT}`);
+// 微信云托管使用环境变量 PORT，默认 80
+const PORT = process.env.PORT || 80;
+const HOST = process.env.HOST || '0.0.0.0';
+
+server.listen(PORT, HOST, () => {
+	console.log(`服务器运行在 ${HOST}:${PORT}`);
 });

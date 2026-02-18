@@ -1,0 +1,20 @@
+{
+  "version": "2.0",
+  "envId": "your-env-id",
+  "framework": {
+    "name": "express",
+    "runtime": "Nodejs16"
+  },
+  "functions": [
+    {
+      "name": "poker-score-backend",
+      "runtime": "Nodejs16",
+      "handler": "server.js",
+      "timeout": 60,
+      "memorySize": 512,
+      "envVariables": {
+        "NODE_ENV": "production"
+      }
+    }
+  ]
+}
