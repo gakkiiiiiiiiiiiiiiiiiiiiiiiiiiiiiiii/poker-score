@@ -1,0 +1,64 @@
+{
+  "easycom": {
+    "autoscan": true,
+    "custom": {
+      "^u-(.*)": "uview-ui/components/u-$1/u-$1.vue"
+    }
+  },
+  "pages": [
+    {
+      "path": "pages/index/index",
+      "style": {
+        "navigationBarTitleText": "锄大地计分",
+        "navigationBarBackgroundColor": "#FF6B9D",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
+      "path": "pages/unified-score/unified-score",
+      "style": {
+        "navigationBarTitleText": "统一计分",
+        "navigationBarBackgroundColor": "#FF6B9D",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
+      "path": "pages/lan-room/lan-room",
+      "style": {
+        "navigationBarTitleText": "局域网房间",
+        "navigationBarBackgroundColor": "#FF6B9D",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
+      "path": "pages/online-room/online-room",
+      "style": {
+        "navigationBarTitleText": "联网房间",
+        "navigationBarBackgroundColor": "#FF6B9D",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
+      "path": "pages/game/game",
+      "style": {
+        "navigationBarTitleText": "游戏计分",
+        "navigationBarBackgroundColor": "#FF6B9D",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
+      "path": "pages/round-results/round-results",
+      "style": {
+        "navigationBarTitleText": "局数结果",
+        "navigationBarBackgroundColor": "#FF6B9D",
+        "navigationBarTextStyle": "white"
+      }
+    }
+  ],
+  "globalStyle": {
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "锄大地计分",
+    "navigationBarBackgroundColor": "#FF6B9D",
+    "backgroundColor": "#F8F8F8"
+  }
+}

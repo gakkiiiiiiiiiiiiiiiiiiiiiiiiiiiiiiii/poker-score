@@ -1,0 +1,9 @@
+backend/node_modules/
+frontend/node_modules/
+.DS_Store
+*.log
+backend/.env
+fontend/.env
+fontend/unpackage/
+backend/dist/
+design-assets/*.png
